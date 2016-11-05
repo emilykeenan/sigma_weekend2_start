@@ -8,8 +8,9 @@ $(document).ready(function(){
       url: "/data",
       success: function(data){
         appendDom(data);
-        showFirst();
-        $('#students').children().on("click", showNext);
+        showFirstStudent();
+        $('#nextButton').on("click", showNextStudent);
+        $('#prevButton').on("click", showPrevStudent);
       }
     });
 });
@@ -31,11 +32,37 @@ function appendDom(data) {
 }
 
 
-
-function showFirst() {
+//function to show Chris
+function showFirstStudent() {
   $('.indivStudent0').show();
 }
 
-function showNext(){
-  $(this).next().show();
+function showLastStudent() {
+  $('.indivStudent18').show();
+}
+
+//function to hide the current student and show the next one
+//if it reaches the last student, it starts back at the first
+function showNextStudent(){
+  $('.indivStudent' + studentNumber).fadeOut().hide();
+  studentNumber++;
+  $('.indivStudent' + studentNumber).fadeIn().show();
+  if(studentNumber > 18){
+    studentNumber = 0;
+    showFirstStudent();
+  }
+  console.log(studentNumber);
+}
+
+//function to hide the current student and show the previous one
+//if it reaches the first student, it starts over from the back
+function showPrevStudent(){
+  $('.indivStudent' + studentNumber)fadeOut().hide();
+  studentNumber--;
+  $('.indivStudent' + studentNumber).fadeIn().show();
+  if(studentNumber < 0){
+    studentNumber = 18;
+    showLastStudent();
+  }
+  console.log(studentNumber);
 }
