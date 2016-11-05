@@ -1,6 +1,8 @@
 var count = 0; //global variable to keep track of student indices
 
-var studentNumber = 0;
+var studentNumber = 0; //global variable to keep track of which student is showing
+
+var timer = setInterval(showNextStudent, 10000); //global variable to set timer
 
 $(document).ready(function(){
     $.ajax({
@@ -9,8 +11,12 @@ $(document).ready(function(){
       success: function(data){
         appendDom(data);
         showFirstStudent();
+        activateFirstCounter();
+        timer;
         $('#nextButton').on("click", showNextStudent);
+        $('#nextButton').on("click", resetTimer);
         $('#prevButton').on("click", showPrevStudent);
+        $('#prevButton').on("click", resetTimer);
       }
     });
 });
@@ -21,8 +27,8 @@ function appendDom(data) {
     $("#students").append('<div class="student indivStudent'+ count + '"></div>');
     //setting var $el to individual student divs
     var $el = $("#students").children().last();
-    $el.append('<h3>' + data.sigmanauts[i].name + '</h3>');
-    $el.append('<h5>' + "Github Username: " + data.sigmanauts[i].git_username + '</h5>');
+    $el.append('<h2>' + data.sigmanauts[i].name + '</h2>');
+    $el.append('<p>' + "Github Username: " + data.sigmanauts[i].git_username + '</p>');
     $el.append('<p>' + "Shoutout: " + data.sigmanauts[i].shoutout + '</p>');
     $el.hide();
     $("#counter").append('<div class="counter studentCounter'+ count + '"></div>');
@@ -37,32 +43,56 @@ function showFirstStudent() {
   $('.indivStudent0').fadeIn().show();
 }
 
+//function to activate first counter
+function activateFirstCounter() {
+  $('.studentCounter0').addClass('active');
+}
+
+//function to show Kris
 function showLastStudent() {
   $('.indivStudent18').fadeIn().show();
 }
 
+//function to activate last counter
+function activateLastCounter() {
+  $('.studentCounter18').addClass('active');
+}
+
 //function to hide the current student and show the next one
 //if it reaches the last student, it starts back at the first
-function showNextStudent(){
+//this also advances the student counter
+function showNextStudent(data){
   $('.indivStudent' + studentNumber).fadeOut().hide();
+  $('.studentCounter' + studentNumber).removeClass('active');
   studentNumber++;
   $('.indivStudent' + studentNumber).fadeIn().show();
+  $('.studentCounter' + studentNumber).addClass('active');
   if(studentNumber > 18){
     studentNumber = 0;
     showFirstStudent();
+    activateFirstCounter();
   }
   console.log(studentNumber);
 }
 
 //function to hide the current student and show the previous one
 //if it reaches the first student, it starts over from the back
-function showPrevStudent(){
+function showPrevStudent(data){
   $('.indivStudent' + studentNumber).fadeOut().hide();
+  $('.studentCounter' + studentNumber).removeClass('active');
   studentNumber--;
   $('.indivStudent' + studentNumber).fadeIn().show();
+  $('.studentCounter' + studentNumber).addClass('active');
   if(studentNumber < 0){
     studentNumber = 18;
     showLastStudent();
+    activateLastCounter();
   }
   console.log(studentNumber);
+}
+
+// function to reset timer on clicks
+function resetTimer() {
+  clearInterval(timer);
+  timer;
 }
