@@ -9,14 +9,15 @@ body {
 .counter {
   height: 10px;
   width: 10px;
-  background: white;
+  background: #1e1327;
+  border: 1px solid white;
   float: left;
   margin: 14px 2px 2px 2px;
   border-radius: 50%;
 }
 
 .active {
-  background: magenta;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 button {
@@ -38,7 +39,7 @@ button {
 #students {
   height: 200px;
   width: 400px;
-  background: beige;
+  background: rgba(255, 255, 255, 0.8);
   margin: 0 auto;
   padding: 10px 50px 70px 50px;
   text-align: center;
