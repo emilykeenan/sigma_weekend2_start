@@ -28,6 +28,10 @@ button {
   color: white;
 }
 
+button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 #prevButton {
   margin-right: 20px;
 }
@@ -39,7 +43,7 @@ button {
 #students {
   height: 200px;
   width: 400px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   margin: 0 auto;
   padding: 10px 50px 70px 50px;
   text-align: center;
@@ -60,5 +64,5 @@ h1 {
 #counterContainer {
   width: 400px;
   margin: 20px auto 0 auto;
-  padding-left: 50px;
+  padding-left: 20px;
 }
