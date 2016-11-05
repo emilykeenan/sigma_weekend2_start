@@ -34,11 +34,11 @@ function appendDom(data) {
 
 //function to show Chris
 function showFirstStudent() {
-  $('.indivStudent0').show();
+  $('.indivStudent0').fadeIn().show();
 }
 
 function showLastStudent() {
-  $('.indivStudent18').show();
+  $('.indivStudent18').fadeIn().show();
 }
 
 //function to hide the current student and show the next one
@@ -57,7 +57,7 @@ function showNextStudent(){
 //function to hide the current student and show the previous one
 //if it reaches the first student, it starts over from the back
 function showPrevStudent(){
-  $('.indivStudent' + studentNumber)fadeOut().hide();
+  $('.indivStudent' + studentNumber).fadeOut().hide();
   studentNumber--;
   $('.indivStudent' + studentNumber).fadeIn().show();
   if(studentNumber < 0){

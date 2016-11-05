@@ -1,17 +1,20 @@
-.studentCounter {
+.counter {
   height: 10px;
   width: 10px;
   background: black;
+  float: left;
+  margin: 2px;
+}
+
+.active {
+  background: magenta;
 }
 
 #students {
   height: 200px;
   width: 800px;
   background: magenta;
-  overflow: scroll;
 }
 
 #counter {
-  height: 200px;
-  width: 800px;
 }
