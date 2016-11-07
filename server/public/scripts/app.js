@@ -94,5 +94,5 @@ function showPrevStudent(data){
 // function to reset timer on clicks
 function resetTimer() {
   clearInterval(timer);
-  timer;
+  timer = setInterval(showNextStudent, 10000);
 }
