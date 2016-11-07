@@ -40,7 +40,7 @@ function appendDom(data) {
 
 //function to show Chris
 function showFirstStudent() {
-  $('.indivStudent0').fadeIn().show();
+  $('.indivStudent0').fadeIn("slow").show();
 }
 
 //function to activate first counter
@@ -50,7 +50,7 @@ function activateFirstCounter() {
 
 //function to show Kris
 function showLastStudent() {
-  $('.indivStudent18').fadeIn().show();
+  $('.indivStudent18').fadeIn("slow").show();
 }
 
 //function to activate last counter
@@ -62,10 +62,10 @@ function activateLastCounter() {
 //if it reaches the last student, it starts back at the first
 //this also advances the student counter
 function showNextStudent(data){
-  $('.indivStudent' + studentNumber).fadeOut().hide();
+  $('.indivStudent' + studentNumber).fadeOut("slow").hide();
   $('.studentCounter' + studentNumber).removeClass('active');
   studentNumber++;
-  $('.indivStudent' + studentNumber).fadeIn().show();
+  $('.indivStudent' + studentNumber).fadeIn("slow").show();
   $('.studentCounter' + studentNumber).addClass('active');
   if(studentNumber > 18){
     studentNumber = 0;
@@ -78,10 +78,10 @@ function showNextStudent(data){
 //function to hide the current student and show the previous one
 //if it reaches the first student, it starts over from the back
 function showPrevStudent(data){
-  $('.indivStudent' + studentNumber).fadeOut().hide();
+  $('.indivStudent' + studentNumber).fadeOut("slow").hide();
   $('.studentCounter' + studentNumber).removeClass('active');
   studentNumber--;
-  $('.indivStudent' + studentNumber).fadeIn().show();
+  $('.indivStudent' + studentNumber).fadeIn("slow").show();
   $('.studentCounter' + studentNumber).addClass('active');
   if(studentNumber < 0){
     studentNumber = 18;
